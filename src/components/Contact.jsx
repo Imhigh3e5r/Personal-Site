@@ -46,7 +46,7 @@ export default function Contact() {
             <ArrowUpRight size={16} />
           </a>
           <a
-            href="https://linkedin.com/in/yourprofile"
+            href="https://www.linkedin.com/in/muhammed-ozturk-602b36334/"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-secondary"
