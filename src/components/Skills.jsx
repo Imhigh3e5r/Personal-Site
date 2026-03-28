@@ -21,7 +21,8 @@ const skillCategories = [
   },
   {
     title: 'Tools',
-    skills: ['GitHub', 'VS Code'],
+    skills: ['GitHub', 'VS Code', "Claude"],
+
   },
 ];
 

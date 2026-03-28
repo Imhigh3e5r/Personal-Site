@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="footer-inner">
         <div className="footer-name">Muhammed Ozturk</div>
         <div className="footer-line">
-          &copy; {new Date().getFullYear()} &middot; Built with focus and intention.
+          &copy; {new Date().getFullYear()} &middot; Built with focus, Intention and luck.
         </div>
       </div>
     </footer>
