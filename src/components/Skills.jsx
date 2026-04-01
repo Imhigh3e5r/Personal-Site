@@ -1,75 +1,31 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.1 },
-  }),
-};
-
-const skillCategories = [
+const skills = [
+  { category: 'Languages', items: ['Java', 'JavaScript'] },
   {
-    title: 'Languages',
-    skills: ['Java', 'JavaScript'],
+    category: 'Concepts',
+    items: ['Data Structures & Algorithms', 'OOP', 'Debugging', 'Problem Solving'],
   },
-  {
-    title: 'Concepts',
-    skills: ['Data Structures & Algorithms', 'Debugging', 'Problem Solving', 'Object-Oriented Programming'],
-  },
-  {
-    title: 'Tools',
-    skills: ['GitHub', 'VS Code', "Claude"],
-
-  },
+  { category: 'Tools', items: ['Git', 'GitHub', 'VS Code', 'Claude'] },
 ];
 
 export default function Skills() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
-
   return (
-    <section className="section" id="skills" ref={ref}>
-      <motion.div
-        custom={0}
-        variants={fadeUp}
-        initial="hidden"
-        animate={inView ? 'visible' : 'hidden'}
-      >
-        <span className="section-label">Skills</span>
-        <h2 className="section-title">What I work with</h2>
-        <p className="section-subtitle">
-          Languages, concepts, and tools I use to build and learn.
-        </p>
-      </motion.div>
+    <section className="section" id="skills">
+      <span className="section-eyebrow" data-animate="0">Skills</span>
+      <h2 className="section-heading" data-animate="1">What I work with</h2>
+      <p className="section-lead" data-animate="2">
+        Languages, concepts, and tools I use to build and learn.
+      </p>
 
-      <div className="skills-grid">
-        {skillCategories.map((cat, ci) => (
-          <motion.div
-            key={cat.title}
-            className="skill-category"
-            custom={ci + 1}
-            variants={fadeUp}
-            initial="hidden"
-            animate={inView ? 'visible' : 'hidden'}
-          >
-            <div className="skill-cat-title">{cat.title}</div>
-            <div className="skill-items">
-              {cat.skills.map((skill, si) => (
-                <motion.span
-                  key={skill}
-                  className="skill-chip"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.3, delay: (ci + 1) * 0.1 + si * 0.06 }}
-                >
-                  {skill}
-                </motion.span>
+      <div className="skills-table">
+        {skills.map((s, i) => (
+          <div key={s.category} className="skills-row" data-animate={String(i + 3)}>
+            <span className="skills-category">{s.category}</span>
+            <div className="skills-chips">
+              {s.items.map(item => (
+                <span key={item} className="skill-chip">{item}</span>
               ))}
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>

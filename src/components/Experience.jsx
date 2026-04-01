@@ -1,63 +1,29 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Briefcase } from 'lucide-react';
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.1 },
-  }),
-};
+const skills = ['Communication', 'Problem Solving', 'Coordination', 'Adaptability', 'Multitasking'];
 
 export default function Experience() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
-
   return (
-    <section className="section" id="experience" ref={ref}>
-      <motion.div
-        custom={0}
-        variants={fadeUp}
-        initial="hidden"
-        animate={inView ? 'visible' : 'hidden'}
-      >
-        <span className="section-label">Experience</span>
-        <h2 className="section-title">Where I've worked</h2>
-      </motion.div>
+    <section className="section" id="experience">
+      <span className="section-eyebrow" data-animate="0">Experience</span>
+      <h2 className="section-heading" data-animate="1">Where I've worked</h2>
 
-      <motion.div
-        className="experience-card"
-        custom={1}
-        variants={fadeUp}
-        initial="hidden"
-        animate={inView ? 'visible' : 'hidden'}
-      >
-        <div className="exp-header">
-          <div className="exp-icon">
-            <Briefcase size={22} />
-          </div>
-          <div>
-            <div className="exp-role">Host</div>
-            <div className="exp-company">Chili's Grill & Bar</div>
-          </div>
+      <div className="exp-entry" data-animate="2">
+        <div className="exp-meta">
+          <span className="exp-role">Host</span>
+          <span className="exp-sep">&middot;</span>
+          <span className="exp-company">Chili's Grill &amp; Bar</span>
         </div>
         <p className="exp-desc">
-          Managed guest flow, waitlists, and seating coordination in a fast-paced
-          restaurant environment. Worked closely with front-of-house and kitchen staff to
-          keep service running smoothly. Built strong skills in communication, adaptability,
-          multitasking, and real-time problem solving — the kind of operational thinking that
-          carries over directly into technical work.
+          Managed guest flow, waitlists, and seating in a fast-paced restaurant environment.
+          Worked closely with front-of-house and kitchen staff to keep service running smoothly.
+          Built strong communication, adaptability, and real-time problem solving skills —
+          operational thinking that carries directly into technical work.
         </p>
-        <div className="exp-skills">
-          <span className="exp-skill">Communication</span>
-          <span className="exp-skill">Problem Solving</span>
-          <span className="exp-skill">Coordination</span>
-          <span className="exp-skill">Adaptability</span>
-          <span className="exp-skill">Multitasking</span>
+        <div className="exp-tags">
+          {skills.map(s => (
+            <span key={s} className="exp-tag">{s}</span>
+          ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

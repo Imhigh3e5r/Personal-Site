@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import useScrollAnimate from './hooks/useScrollAnimate';
+import ScrollCanvas from './components/ScrollCanvas';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -24,22 +25,20 @@ export default function App() {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark');
+  useScrollAnimate();
+
+  const toggleTheme = () => setTheme(t => (t === 'dark' ? 'light' : 'dark'));
 
   return (
     <>
+      <ScrollCanvas />
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <main>
         <Hero />
-        <div className="section-divider"><hr /></div>
         <About />
-        <div className="section-divider"><hr /></div>
         <Projects />
-        <div className="section-divider"><hr /></div>
         <Experience />
-        <div className="section-divider"><hr /></div>
         <Skills />
-        <div className="section-divider"><hr /></div>
         <Contact />
       </main>
       <Footer />
