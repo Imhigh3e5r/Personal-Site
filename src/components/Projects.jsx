@@ -5,9 +5,11 @@ const projects = [
     desc: 'Built a stock trading simulation using arrays and linked lists. Implemented buy/sell logic, transaction tracking, and ROI calculations with a focus on data structure efficiency.',
   },
   {
-    title: 'Mario Sort',
-    tech: ['Java', 'Sorting Algorithms', 'OOP'],
-    desc: 'Implemented Insertion Sort and Merge Sort on custom objects, sorting by lap times, stars, and coins. Focused on algorithm design, object handling, and performance logic.',
+    title: 'Redline',
+    tech: ['React', 'JavaScript', 'Product Design', 'UX/UI'],
+    desc: 'Built a car-focused social platform where users can share car photos, view profiles, and interact through a clean, modern interface. Designed the project with a premium visual style, real-world product thinking, and scalable social app features in mind.',
+    href: 'https://redlineapp.netlify.app/',
+    favicon: 'https://redlineapp.netlify.app/favicon.ico',
   },
   {
     title: 'Appliance Troubleshooting AI',
@@ -28,7 +30,18 @@ export default function Projects() {
       <div className="projects-list">
         {projects.map((p, i) => (
           <div key={p.title} className="project-item" data-animate={String(i + 3)}>
-            <h3 className="project-title">{p.title}</h3>
+            <h3 className="project-title">
+              {p.favicon && (
+                <img src={p.favicon} alt="" className="project-favicon" width="16" height="16" />
+              )}
+              {p.href ? (
+                <a href={p.href} target="_blank" rel="noreferrer" className="project-link">
+                  {p.title}
+                </a>
+              ) : (
+                p.title
+              )}
+            </h3>
             <p className="project-desc">{p.desc}</p>
             <div className="project-tags">
               {p.tech.map(t => (

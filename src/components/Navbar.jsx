@@ -25,6 +25,17 @@ export default function Navbar({ theme, toggleTheme }) {
         </ul>
 
         <div className="nav-controls">
+          <a
+            href="/resume.pdf"
+            download
+            className="nav-resume"
+            aria-label="Download resume"
+          >
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 3v12M6 11l6 6 6-6M5 21h14" />
+            </svg>
+            Resume
+          </a>
           <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
             {theme === 'dark' ? (
               <svg className="theme-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -65,6 +76,14 @@ export default function Navbar({ theme, toggleTheme }) {
             {item.label}
           </a>
         ))}
+        <a
+          href="/resume.pdf"
+          download
+          className="mobile-resume"
+          onClick={() => setMobileOpen(false)}
+        >
+          Resume ↓
+        </a>
       </div>
     </nav>
   );
